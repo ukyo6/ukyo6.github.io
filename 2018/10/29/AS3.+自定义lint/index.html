@@ -79,13 +79,23 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="title: haha.mddate: 2018-10-29 01:46:36tags:  Android   ##概述lint是代码风格和语法规则的检查工具,不限于android平台,其他例如jslint,eslint..在最新的稳定版本中,官方提供了342个定义好的lint规则,基本满足开发中的需要,基本介绍和使用方法参照官方教程  此外我们还需要某些特殊的场景下的检查,例如 序列化的内部类">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/29/AS3.+自定义lint/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: haha.mddate: 2018-10-29 01:46:36tags:  Android   ##概述lint是代码风格和语法规则的检查工具,不限于android平台,其他例如jslint,eslint..在最新的稳定版本中,官方提供了342个定义好的lint规则,基本满足开发中的需要,基本介绍和使用方法参照官方教程  此外我们还需要某些特殊的场景下的检查,例如 序列化的内部类">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4960358-e025ec4d8e5259e1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4960358-71fc216384f86a2b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4960358-78453d627908fda5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4960358-e282214648639075?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4960358-7401fc32db31664d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-28T17:53:58.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: haha.mddate: 2018-10-29 01:46:36tags:  Android   ##概述lint是代码风格和语法规则的检查工具,不限于android平台,其他例如jslint,eslint..在最新的稳定版本中,官方提供了342个定义好的lint规则,基本满足开发中的需要,基本介绍和使用方法参照官方教程  此外我们还需要某些特殊的场景下的检查,例如 序列化的内部类">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4960358-e025ec4d8e5259e1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -115,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2018/10/29/AS3.+自定义lint/">
 
 
 
 
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -140,8 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -214,9 +223,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/29/AS3.+自定义lint/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -298,9 +305,7 @@
       
 
       
-        
-          
-            <hr>
+        <hr>
 <p>title: haha.md<br>date: 2018-10-29 01:46:36<br>tags:</p>
 <ul>
 <li>Android</li>
@@ -382,8 +387,6 @@
 <li><a href="https://groups.google.com/forum/#!forum/lint-dev" target="_blank" rel="noopener">Google论坛Lint-dev</a></li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -400,12 +403,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -415,10 +418,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -426,6 +430,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -446,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -498,6 +515,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lint-parser"><span class="nav-number">1.</span> <span class="nav-text">Lint parser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建java-library"><span class="nav-number">2.1.</span> <span class="nav-text">1. 创建java-library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-实现自定义的detector"><span class="nav-number">2.2.</span> <span class="nav-text">2. 实现自定义的detector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建自定义的IssueRegistry-在app中使用该Registry"><span class="nav-number">2.3.</span> <span class="nav-text">3. 创建自定义的IssueRegistry, 在app中使用该Registry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现Detector"><span class="nav-number">3.</span> <span class="nav-text">实现Detector</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-实现Scanner接口"><span class="nav-number">3.1.</span> <span class="nav-text">1.实现Scanner接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-定义ISSUE"><span class="nav-number">3.2.</span> <span class="nav-text">2.定义ISSUE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-实现getApplicableXX和visitXX方法方法"><span class="nav-number">3.3.</span> <span class="nav-text">3.实现getApplicableXX和visitXX方法方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-报告ISSUE"><span class="nav-number">3.4.</span> <span class="nav-text">4.报告ISSUE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lint调试"><span class="nav-number">5.</span> <span class="nav-text">lint调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lint构建优化"><span class="nav-number">5.1.</span> <span class="nav-text">Lint构建优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.2.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -638,6 +671,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
