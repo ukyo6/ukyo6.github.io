@@ -229,6 +229,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/haha-md/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/29/haha-md/" itemprop="url">haha.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-29T01:46:36+08:00">
+                2018-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>下面介绍自定义lint的基本配置</p>
+<h2 id="Lint-parser"><a href="#Lint-parser" class="headerlink" title="Lint parser"></a>Lint parser</h2><blockquote>
+<p>自从Lint从第一个版本就选择了lombok-ast作为自己的AST Parser，并且用了很久。但是Java语言本身在不断更新，Android也在不断迭代出新，lombok-ast慢慢跟不上发展，所以Lint在25.2.0版增加了IntelliJ的PSI（Program Structure Interface）作为新的AST Parser。但是PSI于IntelliJ、于Lint也只是个过渡性方案，事实上IntelliJ早已开始了新一代AST Parser，UAST（Unified AST）的开发，而Lint也将于即将发布的25.4.0版中将PSI更新为UAST。  </p>
+</blockquote>
+<p>更多的介绍请参考这篇博客<a href="https://blog.csdn.net/u012448058/article/details/68935865" target="_blank" rel="noopener">LintParser具体介绍</a>, 简单的说从lambok-&gt;PSI-&gt;UAST,官方一直在优化lint的执行效率和扩展性,本文使用的是Lint26.2.0版本</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -393,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -401,6 +525,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
