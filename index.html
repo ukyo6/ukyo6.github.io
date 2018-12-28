@@ -593,6 +593,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/databinding报错合集/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hewei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ukyo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/databinding报错合集/" itemprop="url">databinding报错合集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T22:59:09+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dev/" itemprop="url" rel="index">
+                    <span itemprop="name">Dev</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="中文引用报错"><a href="#中文引用报错" class="headerlink" title="中文引用报错"></a>中文引用报错</h3><p><img src="https://upload-images.jianshu.io/upload_images/4960358-b25b2dd09b97b665.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="报错"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4960358-c9bd6b102abf5c26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内容"></p>
+<p>中文引用会直接报错; 改为变量引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;string name=&quot;item_node_topic_num&quot;&gt;%d个主题&lt;/string&gt; `</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text=&quot;@&#123;@string/item_node_topic_num(item.topics)&#125;&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="引用kotlin的伴生对象报错"><a href="#引用kotlin的伴生对象报错" class="headerlink" title="引用kotlin的伴生对象报错"></a>引用kotlin的伴生对象报错</h3><p><code>[kapt] An exception occurred: android.databinding.tool.util.LoggedErrorException: Found data binding errors.
+****/ data binding error ****msg:cannot find method toString(long) in class com.ukyoo.v2client.util.TimeFormatUtils</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">object TimeFormatUtils&#123;</span><br><span class="line"></span><br><span class="line">    fun toString(ts: Long): String &#123;</span><br><span class="line">        if (ts == -1L) return &quot;&quot;</span><br><span class="line">        val created = ts * 1000</span><br><span class="line">        val now = System.currentTimeMillis()</span><br><span class="line">        val difference = now - created</span><br><span class="line">        val text = if (difference &gt;= 0 &amp;&amp; difference &lt;= DateUtils.MINUTE_IN_MILLIS)</span><br><span class="line">            &quot;刚刚&quot;</span><br><span class="line">        else</span><br><span class="line">            DateUtils.getRelativeTimeSpanString(</span><br><span class="line">                created,</span><br><span class="line">                now,</span><br><span class="line">                DateUtils.MINUTE_IN_MILLIS,</span><br><span class="line">                DateUtils.FORMAT_ABBREV_RELATIVE</span><br><span class="line">            )</span><br><span class="line">        return text.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>xml中引用的地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text=&quot;@&#123;TimeFormatUtils.toString(item.created)&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>因为kotlin运行时还是被翻译成java字节码的,所以和.java中调用kotlin一样,在databinding中引用kotlin的对象声明和伴生对象也需要加上@JvmField和@JvmStatic<br>注解才能将他们暴露为静态,参考<a href="&quot;https://kotlinlang.org/docs/reference/object-declarations.html#object-expressions&quot;">官方文档_Object Expressions and Declarations</a><br>这里只需要在方法上加上@JvmStatic注解,编译成功</p>
+<h3 id="include中使用"><a href="#include中使用" class="headerlink" title="include中使用"></a>include中使用</h3><ol>
+<li><p>在include的布局内定义好xxx变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line"></span><br><span class="line"> &lt;variable</span><br><span class="line">  name=&quot;item&quot;</span><br><span class="line">  type=&quot;com.ukyoo.v2client.entity.TopicModel&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/data&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在容器布局中直接app:xxx引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line"> &lt;variable</span><br><span class="line">  name=&quot;vm&quot;</span><br><span class="line">  type=&quot;com.ukyoo.v2client.ui.viewmodels.DetailViewModel&quot;/&gt;</span><br><span class="line">&lt;/data&gt;</span><br><span class="line"></span><br><span class="line">       &lt;RelativeLayout</span><br><span class="line">   android:id=&quot;@+id/container&quot;</span><br><span class="line">   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">   android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;include</span><br><span class="line">    app:item=&quot;@&#123;vm.topic&#125;&quot;</span><br><span class="line">    android:id=&quot;@+id/top&quot;</span><br><span class="line">    layout=&quot;@layout/item_topic_header&quot;/&gt;</span><br><span class="line">       &lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以直接在include布局内引用xxx对象了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.ukyoo.v2client.widget.CircleImageView</span><br><span class="line"> app:url=&quot;@&#123;item.member.avatar&#125;&quot;</span><br><span class="line"> app:avatar=&quot;@&#123;true&#125;&quot;</span><br><span class="line"> android:id=&quot;@+id/iv_avatar&quot;</span><br><span class="line"> android:layout_width=&quot;36dp&quot;</span><br><span class="line"> android:layout_height=&quot;36dp&quot;</span><br><span class="line"> android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">    tools:src=&quot;@drawable/user&quot;/&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/ConstraintLayout性能验证/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1178,7 +1338,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1200,7 +1360,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
