@@ -423,6 +423,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/apply{}和kotlin中的代码块/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hewei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ukyo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/02/apply{}和kotlin中的代码块/" itemprop="url">databinding报错合集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T22:59:09+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dev/" itemprop="url" rel="index">
+                    <span itemprop="name">Dev</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>构造对象的时候免不了要进行一些初始化的操作,我们可以使用java提供的构造代码块<br>使用kotlin后,我们多了别的选择<br>Standard.kt是kotlin封装好的一个工具类,其中的apply方法为<br><code>fun T.apply(block: T.() -&gt; Unit): T { block(); return this }</code><br>可以看到返回值返回的是<strong>对象本身</strong>,很适合对象的初始化操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">htmlService.login(HashMap&lt;String,String&gt;().apply &#123;</span><br><span class="line">     put(&quot;1&quot;,&quot;1&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>通过AndroidStudio自带的show kotlin byteCode可以查看编译后的.class文件,<br>方法: <code>Tools -&gt;Koltin -&gt; Show Kotlin ByteCode</code>,点击插件GUI的Decompile<br><img src="https://upload-images.jianshu.io/upload_images/4960358-749ba231dc5513ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>反编译后的文件,可以看到</p>
+<ul>
+<li>使用<code>apply{}</code>方法,和我们自己构造赋值一样,类似的还有<code>with</code>,<code>run</code>,<code>let</code>方法,可以参照<a href="&quot;https://blog.csdn.net/u013064109/article/details/78786646&quot;">Kotlin系列之let、with、run、apply、also函数的使用</a></li>
+<li>使用代码块<code>init{}</code>生成的就是java的代码块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public final void login() &#123;</span><br><span class="line">      HtmlService var10000 = this.htmlService;</span><br><span class="line">      HashMap var1 = new HashMap();</span><br><span class="line">      HtmlService var4 = var10000;</span><br><span class="line">      var1.put(&quot;1&quot;, &quot;1&quot;);</span><br><span class="line">      var4.login((Map)var1);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public final void login1() &#123;</span><br><span class="line">      this.htmlService.login((Map)(new HashMap() &#123;</span><br><span class="line">         &#123;</span><br><span class="line">            this.put(&quot;1&quot;, &quot;1&quot;);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // $FF: bridge method</span><br><span class="line">         public boolean containsValue(String var1) &#123;</span><br><span class="line">            return super.containsValue(var1);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // $FF: bridge method</span><br><span class="line">         public final boolean containsValue(Object var1) &#123;</span><br><span class="line">            return var1 instanceof String ? this.containsValue((String)var1) : false;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // $FF: bridge method</span><br><span class="line">         public String getOrDefault(String var1, String var2) &#123;</span><br><span class="line">            return (String)super.getOrDefault(var1, var2);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // $FF: bridge method</span><br><span class="line">         public final Object getOrDefault(Object var1, Object var2) &#123;</span><br><span class="line">            return var1 instanceof String ? this.getOrDefault((String)var1, (String)var2) : var2;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // $FF: bridge method</span><br><span class="line">         public boolean containsKey(String var1) &#123;</span><br><span class="line">            return super.containsKey(var1);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // $FF: bridge method</span><br><span class="line">         public final boolean containsKey(Object var1) &#123;</span><br><span class="line">            return var1 instanceof String ? this.containsKey((String)var1) : false;</span><br><span class="line">         &#125;</span><br><span class="line">        ........</span><br><span class="line">      &#125;));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当然java中的静态代码块,构造代码块,方法代码块在kotlin中也是可以使用的</p>
+<p>##构造代码块</p>
+<ul>
+<li><p>先看java中的构造代码块,这里的例子是一个匿名内部类的构造方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void login() &#123;</span><br><span class="line">    new HashMap&lt;String, String&gt;() &#123;</span><br><span class="line">        &#123;</span><br><span class="line">            put(&quot;1&quot;, &quot;1&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>kotlin中需要加上<code>init{ }</code>来标识</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">htmlService.login(object : HashMap&lt;String, String&gt;() &#123;</span><br><span class="line">     init &#123;</span><br><span class="line">         put(&quot;1&quot;, &quot;1&quot;)</span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><ul>
+<li>java中的静态代码块不多做说明</li>
+<li>kotlin是没有static的,这里想到的肯定是<strong>伴生对象</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//java代码</span><br><span class="line">static&#123;</span><br><span class="line">   int aa =1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//kotlin代码</span><br><span class="line">companion object &#123;   //kotlin的静态代码块</span><br><span class="line">    init&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="方法代码块"><a href="#方法代码块" class="headerlink" title="方法代码块"></a>方法代码块</h2><ul>
+<li>java中的方法代码块不多做说明</li>
+<li>kotlin中的方法代码块,<strong>由于和kotlin中lambda简写的{ }冲突,系统会提示我们使用Standard.kt中的run{ }方法</strong><br><img src="https://upload-images.jianshu.io/upload_images/4960358-0bc3a65965f746f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//java</span><br><span class="line">void test()&#123;</span><br><span class="line">     &#123;</span><br><span class="line">         int a = 1;</span><br><span class="line">     &#125;</span><br><span class="line">     a = 2;  //报错</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> //kotlin</span><br><span class="line"> fun test()&#123;</span><br><span class="line">     run &#123;</span><br><span class="line">         var a =1</span><br><span class="line">     &#125;</span><br><span class="line">     a =2  //报错</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>和java中的{}一样,括号中声明的变量作用域仅限于括号内</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/databinding报错合集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1168,7 +1338,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1190,7 +1360,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
