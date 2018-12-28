@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android Window,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述dialog的windowAnimation肯定不会陌生,大家都习惯了这么使用1234&amp;lt;style name=&amp;quot;DialogAnimation&amp;quot; parent=&amp;quot;@android:style/Animation.Dialog&amp;quot;&amp;gt;    &amp;lt;item name=&amp;quot;android:windowEnterAnimation&amp;quot;">
+<meta name="keywords" content="Android Window">
+<meta property="og:type" content="article">
+<meta property="og:title" content="databinding报错合集">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/dialog动画的一个小问题/index.html">
+<meta property="og:site_name" content="Ukyo&#39;s Blog">
+<meta property="og:description" content="概述dialog的windowAnimation肯定不会陌生,大家都习惯了这么使用1234&amp;lt;style name=&amp;quot;DialogAnimation&amp;quot; parent=&amp;quot;@android:style/Animation.Dialog&amp;quot;&amp;gt;    &amp;lt;item name=&amp;quot;android:windowEnterAnimation&amp;quot;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-af6fb59eeb9b6008.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-43594d96e8c0c788.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-28T09:55:44.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="databinding报错合集">
+<meta name="twitter:description" content="概述dialog的windowAnimation肯定不会陌生,大家都习惯了这么使用1234&amp;lt;style name=&amp;quot;DialogAnimation&amp;quot; parent=&amp;quot;@android:style/Animation.Dialog&amp;quot;&amp;gt;    &amp;lt;item name=&amp;quot;android:windowEnterAnimation&amp;quot;">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4960358-af6fb59eeb9b6008.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/dialog动画的一个小问题/">
+
+
+
+
+
+  <title>databinding报错合集 | Ukyo's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ukyo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/dialog动画的一个小问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hewei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ukyo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">databinding报错合集</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T22:59:09+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dev/" itemprop="url" rel="index">
+                    <span itemprop="name">Dev</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>dialog的windowAnimation肯定不会陌生,大家都习惯了这么使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;DialogAnimation&quot; parent=&quot;@android:style/Animation.Dialog&quot;&gt;</span><br><span class="line">    &lt;item name=&quot;android:windowEnterAnimation&quot;&gt;@anim/actionsheet_dialog_in&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:windowExitAnimation&quot;&gt;@anim/actionsheet_dialog_out&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<p>actionsheet_dialog_in.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;translate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">           android:duration=&quot;200&quot;</span><br><span class="line">           android:fromYDelta=&quot;100%&quot;</span><br><span class="line">           android:toYDelta=&quot;0&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>actionsheet_dialog_out.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;translate xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">           android:duration=&quot;200&quot;</span><br><span class="line">           android:fromYDelta=&quot;0&quot;</span><br><span class="line">           android:toYDelta=&quot;100%&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>但是这样有个问题,每次页面退到后台和返回前台的时候,dialog的动画都会再执行一次;这是因为dialog是通过<code>PhoneWindow</code>创建的,每次页面<strong>显示/隐藏</strong>都会触发我们事先设置好的<code>windowAnimation</code>动画</p>
+<p>如果duration设置的非常短,看起来不太明显. 假设在开发者模式里把动画时长设置*10,就能明显看到页面退出后,dialog的window动画还在执行,例如<br><img src="https://upload-images.jianshu.io/upload_images/4960358-af6fb59eeb9b6008.gif?imageMogr2/auto-orient/strip" alt=""><br>看起来非常奇葩,当然你把动画时长设置10倍以后,所有的APP都这样,<code>dialog.dismiss()</code>到底发生了什么呢,来看看源码是怎么处理的</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li><p>dialog的<code>dismissDialog</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void dismissDialog() &#123;</span><br><span class="line">      if (mDecor == null || !mShowing) &#123;</span><br><span class="line">          return;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (mWindow.isDestroyed()) &#123;</span><br><span class="line">          Log.e(TAG, &quot;Tried to dismissDialog() but the Dialog&apos;s window was already destroyed!&quot;);</span><br><span class="line">          return;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      try &#123;</span><br><span class="line">          mWindowManager.removeViewImmediate(mDecor);</span><br><span class="line">      &#125; finally &#123;</span><br><span class="line">          if (mActionMode != null) &#123;</span><br><span class="line">              mActionMode.finish();</span><br><span class="line">          &#125;</span><br><span class="line">          mDecor = null;</span><br><span class="line">          mWindow.closeAllPanels();</span><br><span class="line">          onStop();</span><br><span class="line">          mShowing = false;</span><br><span class="line"></span><br><span class="line">          sendDismissMessage();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>WindowManagerImpl</code>中的<code>removeViewImmediate</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void removeViewImmediate(View view) &#123;</span><br><span class="line">       mGlobal.removeView(view, true);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>调用<code>removeViewLocked</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public void removeView(View view, boolean immediate) &#123;</span><br><span class="line">    if (view == null) &#123;</span><br><span class="line">        throw new IllegalArgumentException(&quot;view must not be null&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    synchronized (mLock) &#123;</span><br><span class="line">        int index = findViewLocked(view, true);</span><br><span class="line">        View curView = mRoots.get(index).getView();</span><br><span class="line">        removeViewLocked(index, immediate);</span><br><span class="line">        if (curView == view) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        throw new IllegalStateException(&quot;Calling with view &quot; + view</span><br><span class="line">                + &quot; but the ViewAncestor is attached to &quot; + curView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private void removeViewLocked(int index, boolean immediate) &#123;</span><br><span class="line">    ViewRootImpl root = mRoots.get(index);</span><br><span class="line">    View view = root.getView();</span><br><span class="line"></span><br><span class="line">    if (view != null) &#123;</span><br><span class="line">        InputMethodManager imm = InputMethodManager.getInstance();</span><br><span class="line">        if (imm != null) &#123;</span><br><span class="line">            imm.windowDismissed(mViews.get(index).getWindowToken());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    boolean deferred = root.die(immediate);</span><br><span class="line">    if (view != null) &#123;</span><br><span class="line">        view.assignParent(null);</span><br><span class="line">        if (deferred) &#123;</span><br><span class="line">            mDyingViews.add(view);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>root.die方法中调用了<code>ViewRootImpl</code>中的<code>doDie</code>方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void doDie() &#123;</span><br><span class="line">       checkThread();</span><br><span class="line">       if (LOCAL_LOGV) Log.v(mTag, &quot;DIE in &quot; + this + &quot; of &quot; + mSurface);</span><br><span class="line">       synchronized (this) &#123;</span><br><span class="line">           if (mRemoved) &#123;</span><br><span class="line">               return;</span><br><span class="line">           &#125;</span><br><span class="line">           mRemoved = true;</span><br><span class="line">           if (mAdded) &#123;</span><br><span class="line">               dispatchDetachedFromWindow();</span><br><span class="line">           &#125;</span><br><span class="line">       ........</span><br><span class="line">       WindowManagerGlobal.getInstance().doRemoveView(this);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可以看到,<code>dispatchDetachedFromWindow</code>做了资源释放的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">void dispatchDetachedFromWindow() &#123;</span><br><span class="line">     mFirstInputStage.onDetachedFromWindow();</span><br><span class="line">     if (mView != null &amp;&amp; mView.mAttachInfo != null) &#123;</span><br><span class="line">         mAttachInfo.mTreeObserver.dispatchOnWindowAttachedChange(false);</span><br><span class="line">         mView.dispatchDetachedFromWindow();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     mAccessibilityInteractionConnectionManager.ensureNoConnection();</span><br><span class="line">     mAccessibilityManager.removeAccessibilityStateChangeListener(</span><br><span class="line">             mAccessibilityInteractionConnectionManager);</span><br><span class="line">     mAccessibilityManager.removeHighTextContrastStateChangeListener(</span><br><span class="line">             mHighContrastTextManager);</span><br><span class="line">     removeSendWindowContentChangedCallback();</span><br><span class="line"></span><br><span class="line">     destroyHardwareRenderer();</span><br><span class="line"></span><br><span class="line">     setAccessibilityFocus(null, null);</span><br><span class="line"></span><br><span class="line">     mView.assignParent(null);</span><br><span class="line">     mView = null;</span><br><span class="line">     mAttachInfo.mRootView = null;</span><br><span class="line"></span><br><span class="line">     mSurface.release();</span><br><span class="line"></span><br><span class="line">     if (mInputQueueCallback != null &amp;&amp; mInputQueue != null) &#123;</span><br><span class="line">         mInputQueueCallback.onInputQueueDestroyed(mInputQueue);</span><br><span class="line">         mInputQueue.dispose();</span><br><span class="line">         mInputQueueCallback = null;</span><br><span class="line">         mInputQueue = null;</span><br><span class="line">     &#125;</span><br><span class="line">     if (mInputEventReceiver != null) &#123;</span><br><span class="line">         mInputEventReceiver.dispose();</span><br><span class="line">         mInputEventReceiver = null;</span><br><span class="line">     &#125;</span><br><span class="line">     try &#123;</span><br><span class="line">         mWindowSession.remove(mWindow);</span><br><span class="line">     &#125; catch (RemoteException e) &#123;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     // Dispose the input channel after removing the window so the Window Manager</span><br><span class="line">     // doesn&apos;t interpret the input channel being closed as an abnormal termination.</span><br><span class="line">     if (mInputChannel != null) &#123;</span><br><span class="line">         mInputChannel.dispose();</span><br><span class="line">         mInputChannel = null;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     mDisplayManager.unregisterDisplayListener(mDisplayListener);</span><br><span class="line"></span><br><span class="line">     unscheduleTraversals();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p><code>mWindowSession.remove(mWindow)</code>是当前window(这里是dialog的phoneWindow)被移除的地方<br>mWindowSession是<code>IWindowSession.aidl</code>,我们找到<code>class Session extends IWindowSession.Stub</code>里重写的地方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void remove(IWindow window) &#123;</span><br><span class="line">    mService.removeWindow(this, window);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看<code>WindowManagerService</code>中的<code>removeWindow</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void removeWindow(Session session, IWindow client) &#123;</span><br><span class="line">    synchronized(mWindowMap) &#123;</span><br><span class="line">        WindowState win = windowForClientLocked(session, client, false);</span><br><span class="line">        if (win == null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        win.removeIfPossible();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用了<code>WindowState</code>类的<code>removeIfPossible</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">private void removeIfPossible(boolean keepVisibleDeadWindow) &#123;</span><br><span class="line">    .....</span><br><span class="line">    if (wasVisible) &#123;</span><br><span class="line">        final int transit = (!startingWindow) ? TRANSIT_EXIT : TRANSIT_PREVIEW_DONE;</span><br><span class="line"></span><br><span class="line">        // Try starting an animation.</span><br><span class="line">        if (mWinAnimator.applyAnimationLocked(transit, false)) &#123;</span><br><span class="line">            mAnimatingExit = true;</span><br><span class="line"></span><br><span class="line">            // mAnimatingExit affects canAffectSystemUiFlags(). Run layout such that</span><br><span class="line">            // any change from that is performed immediately.</span><br><span class="line">            setDisplayLayoutNeeded();</span><br><span class="line">            mService.requestTraversal();</span><br><span class="line">        &#125;</span><br><span class="line">        //TODO (multidisplay): Magnification is supported only for the default display.</span><br><span class="line">        if (mService.mAccessibilityController != null &amp;&amp; displayId == DEFAULT_DISPLAY) &#123;</span><br><span class="line">            mService.mAccessibilityController.onWindowTransitionLocked(this, transit);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>com.android.server.wm.WindowStateAnimator</code>类中,能够找到<code>applyAnimationLocked(transit, false)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">boolean applyAnimationLocked(int transit, boolean isEntrance) &#123;</span><br><span class="line">    .....</span><br><span class="line">    if (mWin.mToken.okToAnimate()) &#123;</span><br><span class="line">        int anim = mPolicy.selectAnimationLw(mWin, transit);</span><br><span class="line">        int attr = -1;</span><br><span class="line">        Animation a = null;</span><br><span class="line">        if (anim != 0) &#123;</span><br><span class="line">            a = anim != -1 ? AnimationUtils.loadAnimation(mContext, anim) : null;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            switch (transit) &#123;</span><br><span class="line">                case WindowManagerPolicy.TRANSIT_ENTER:</span><br><span class="line">                    attr = com.android.internal.R.styleable.WindowAnimation_windowEnterAnimation;</span><br><span class="line">                    break;</span><br><span class="line">                case WindowManagerPolicy.TRANSIT_EXIT:</span><br><span class="line">                    attr = com.android.internal.R.styleable.WindowAnimation_windowExitAnimation;</span><br><span class="line">                    break;</span><br><span class="line">                case WindowManagerPolicy.TRANSIT_SHOW:</span><br><span class="line">                    attr = com.android.internal.R.styleable.WindowAnimation_windowShowAnimation;</span><br><span class="line">                    break;</span><br><span class="line">                case WindowManagerPolicy.TRANSIT_HIDE:</span><br><span class="line">                    attr = com.android.internal.R.styleable.WindowAnimation_windowHideAnimation;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (attr &gt;= 0) &#123;</span><br><span class="line">                a = mService.mAppTransition.loadAnimationAttr(mWin.mAttrs, attr, TRANSIT_NONE);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看<code>com.android.server.wm.AppTransition</code>中的<code>loadAnimationAttr</code>方法,Animation用到的mContext是在<code>AppTransition</code>的构造中创建的,接着往下看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Animation loadAnimationAttr(LayoutParams lp, int animAttr, int transit) &#123;</span><br><span class="line">    int resId = ResourceId.ID_NULL;</span><br><span class="line">    Context context = mContext;</span><br><span class="line">    if (animAttr &gt;= 0) &#123;</span><br><span class="line">        AttributeCache.Entry ent = getCachedAnimations(lp);</span><br><span class="line">        if (ent != null) &#123;</span><br><span class="line">            context = ent.context;</span><br><span class="line">            resId = ent.array.getResourceId(animAttr, 0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    resId = updateToTranslucentAnimIfNeeded(resId, transit);</span><br><span class="line">    if (ResourceId.isValid(resId)) &#123;</span><br><span class="line">        return AnimationUtils.loadAnimation(context, resId);</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>AppTransition</code>在<code>WindowManagerService</code>中被创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static WindowManagerService main(final Context context, final InputManagerService im,</span><br><span class="line">          final boolean haveInputMethods, final boolean showBootMsgs, final boolean onlyCore,</span><br><span class="line">          WindowManagerPolicy policy) &#123;</span><br><span class="line">      DisplayThread.getHandler().runWithScissors(() -&gt;</span><br><span class="line">              sInstance = new WindowManagerService(context, im, haveInputMethods, showBootMsgs,</span><br><span class="line">                      onlyCore, policy), 0);</span><br><span class="line">      return sInstance;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private WindowManagerService(Context context, InputManagerService inputManager,</span><br><span class="line">        boolean haveInputMethods, boolean showBootMsgs, boolean onlyCore,</span><br><span class="line">        WindowManagerPolicy policy) &#123;</span><br><span class="line">    ......</span><br><span class="line">    mAppTransition = new AppTransition(context, this);</span><br><span class="line">    mAppTransition.registerListenerLocked(mActivityManagerAppTransitionNotifier);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>WindowManagerService</code>在<code>SystemServer</code>中被创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">D:\platform_frameworks_base-master\services\java\com\android\server\SystemServer.java</span><br><span class="line">   private void startOtherServices() &#123;</span><br><span class="line">        final Context context = mSystemContext;</span><br><span class="line">        .....</span><br><span class="line">        // WMS needs sensor service ready</span><br><span class="line">        ConcurrentUtils.waitForFutureNoInterrupt(mSensorServiceStart, START_SENSOR_SERVICE);</span><br><span class="line">        mSensorServiceStart = null;</span><br><span class="line">        wm = WindowManagerService.main(</span><br><span class="line">            context, inputManager,</span><br><span class="line">            mFactoryTestMode != FactoryTest.FACTORY_TEST_LOW_LEVEL,</span><br><span class="line">            !mFirstBoot, mOnlyCore, new PhoneWindowManager ()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>SystemServer</code>中的<code>systemContext</code>是在<code>ActivityThread</code>里创建的,作为程序启动入口的<code>ActivityThread</code>,网上有相当多的文章介绍</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@UnsupportedAppUsage</span><br><span class="line">public ContextImpl getSystemContext() &#123;</span><br><span class="line">    synchronized (this) &#123;</span><br><span class="line">        if (mSystemContext == null) &#123;</span><br><span class="line">            mSystemContext = ContextImpl.createSystemContext(this);</span><br><span class="line">        &#125;</span><br><span class="line">        return mSystemContext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>core/java/android/app/ContextImpl.java</code>中调用了<code>createSystemContext</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@UnsupportedAppUsage</span><br><span class="line"> static ContextImpl createSystemContext(ActivityThread mainThread) &#123;</span><br><span class="line">     LoadedApk packageInfo = new LoadedApk(mainThread);</span><br><span class="line">     ContextImpl context = new ContextImpl(null, mainThread, packageInfo, null, null, null, 0,</span><br><span class="line">             null);</span><br><span class="line">     context.setResources(packageInfo.getResources());</span><br><span class="line">     context.mResources.updateConfiguration(context.mResourcesManager.getConfiguration(),</span><br><span class="line">             context.mResourcesManager.getDisplayMetrics());</span><br><span class="line">     return context;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>到这里我们不难发现,context是属于ActivityThread的成员变量, 并不是持有的dialog所在页面的context现象,因此 <strong>丑归丑,泄露是没有的</strong><br>用profier测试一下,并没有泄露现象<br><img src="https://upload-images.jianshu.io/upload_images/4960358-43594d96e8c0c788.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Window/" rel="tag"># Android Window</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/02/apply{}和kotlin中的代码块/" rel="next" title="databinding报错合集">
+                <i class="fa fa-chevron-left"></i> databinding报错合集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Hewei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hewei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

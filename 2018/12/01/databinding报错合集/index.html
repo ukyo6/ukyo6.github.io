@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android,">
+  <meta name="keywords" content="Android Databinding,">
 
 
 
@@ -79,23 +79,21 @@
 
 
 
-<meta name="description" content="概述constarintLayout是16年IO大会引入的约束型布局,具体使用方法不多介绍,参考 官方介绍虽然拖布局,guidelines,chains使用起来很方便,但是肉眼几乎没法察觉性能上的差异, 这里采用两种方法验证  使用HierarchyViewer 查看根布局layout和measure的时间 使用7.0提供的FrameMetrics API打印每一帧测量布局耗费的时间  通过Hie">
-<meta name="keywords" content="Android">
+<meta name="description" content="中文引用报错  中文引用会直接报错; 改为变量引用1&amp;lt;string name=&amp;quot;item_node_topic_num&amp;quot;&amp;gt;%d个主题&amp;lt;/string&amp;gt; ` 1android:text=&amp;quot;@&amp;#123;@string/item_node_topic_num(item.topics)&amp;#125;&amp;quot; 引用kotlin的伴生对象报错[kapt">
+<meta name="keywords" content="Android Databinding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ConstraintLayout性能验证">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/ConstraintLayout性能验证/index.html">
+<meta property="og:title" content="databinding报错合集">
+<meta property="og:url" content="http://yoursite.com/2018/12/01/databinding报错合集/index.html">
 <meta property="og:site_name" content="Ukyo&#39;s Blog">
-<meta property="og:description" content="概述constarintLayout是16年IO大会引入的约束型布局,具体使用方法不多介绍,参考 官方介绍虽然拖布局,guidelines,chains使用起来很方便,但是肉眼几乎没法察觉性能上的差异, 这里采用两种方法验证  使用HierarchyViewer 查看根布局layout和measure的时间 使用7.0提供的FrameMetrics API打印每一帧测量布局耗费的时间  通过Hie">
+<meta property="og:description" content="中文引用报错  中文引用会直接报错; 改为变量引用1&amp;lt;string name=&amp;quot;item_node_topic_num&amp;quot;&amp;gt;%d个主题&amp;lt;/string&amp;gt; ` 1android:text=&amp;quot;@&amp;#123;@string/item_node_topic_num(item.topics)&amp;#125;&amp;quot; 引用kotlin的伴生对象报错[kapt">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-7c9c7e18ff9ddc01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-46a62527088b6206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-dd68e2dabbc8ce95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-cc95a4e0a3faf230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-04T17:07:01.232Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-b25b2dd09b97b665.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4960358-c9bd6b102abf5c26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-28T09:50:28.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ConstraintLayout性能验证">
-<meta name="twitter:description" content="概述constarintLayout是16年IO大会引入的约束型布局,具体使用方法不多介绍,参考 官方介绍虽然拖布局,guidelines,chains使用起来很方便,但是肉眼几乎没法察觉性能上的差异, 这里采用两种方法验证  使用HierarchyViewer 查看根布局layout和measure的时间 使用7.0提供的FrameMetrics API打印每一帧测量布局耗费的时间  通过Hie">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4960358-7c9c7e18ff9ddc01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="databinding报错合集">
+<meta name="twitter:description" content="中文引用报错  中文引用会直接报错; 改为变量引用1&amp;lt;string name=&amp;quot;item_node_topic_num&amp;quot;&amp;gt;%d个主题&amp;lt;/string&amp;gt; ` 1android:text=&amp;quot;@&amp;#123;@string/item_node_topic_num(item.topics)&amp;#125;&amp;quot; 引用kotlin的伴生对象报错[kapt">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4960358-b25b2dd09b97b665.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -125,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/01/ConstraintLayout性能验证/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/01/databinding报错合集/">
 
 
 
 
 
-  <title>ConstraintLayout性能验证 | Ukyo's Blog</title>
+  <title>databinding报错合集 | Ukyo's Blog</title>
   
 
 
@@ -238,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/ConstraintLayout性能验证/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/databinding报错合集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hewei">
@@ -255,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ConstraintLayout性能验证</h1>
+          <h1 class="post-title" itemprop="name headline">databinding报错合集</h1>
         
 
         <div class="post-meta">
@@ -267,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-01T22:59:09+08:00">
-                2018-11-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T22:59:09+08:00">
+                2018-12-01
               </time>
             
 
@@ -327,29 +325,25 @@
       
 
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>constarintLayout是16年IO大会引入的约束型布局,具体使用方法不多介绍,参考 <a href="https://developer.android.google.cn/reference/android/support/constraint/ConstraintLayout" target="_blank" rel="noopener">官方介绍</a><br>虽然拖布局,guidelines,chains使用起来很方便,但是肉眼几乎没法察觉性能上的差异, 这里采用两种方法验证</p>
-<ul>
-<li>使用HierarchyViewer 查看根布局layout和measure的时间</li>
-<li>使用7.0提供的FrameMetrics API打印每一帧测量布局耗费的时间</li>
-</ul>
-<h2 id="通过HierarchyViewer-验证"><a href="#通过HierarchyViewer-验证" class="headerlink" title="通过HierarchyViewer 验证"></a>通过HierarchyViewer 验证</h2><p>我们主要查看的是mesure和layout的时间,首先想到的是上古时代的Hierarchy Viewer, 可惜hierarchyviewer 已经被废弃了（<a href="http://tools.android.com/recent/androidsdktoolsrevision2530feb2017" target="_blank" rel="noopener">Android SDK Tools Revision 25.3.0 (Feb 2017)</a>）,新方案提供的<a href="http://tools.android.com/tech-docs/layout-inspector" target="_blank" rel="noopener">layoutInspector</a>也只能查看view的层级信息.</p>
-<p>想到DDMS里包括hierarchyviewer,可是DDMS也在AS3.0中被Android Profiler替代了, 好在tools目录下保留了启动DDMS的bat文件, 双击tools下的monitor.bat</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4960358-7c9c7e18ff9ddc01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>找到HierarchyViewer<br><img src="https://upload-images.jianshu.io/upload_images/4960358-46a62527088b6206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>真机上不能查看HierarchyView, 参照这个配置<a href="https://stackoverflow.com/questions/21596782/android-debug-monitor-hierarchy-view-not-showing/45055690#45055690" target="_blank" rel="noopener"> <a href="https://stackoverflow.com/questions/21596782/android-debug-monitor-hierarchy-view-not-showing" target="_blank" rel="noopener">Android Debug Monitor hierarchy view not showing</a>
-</a></p>
-<h4 id="结果如下"><a href="#结果如下" class="headerlink" title="结果如下:"></a>结果如下:</h4><ol>
-<li>可以看到,draw所耗费的时间几乎一样,布局的优化确实不会影响到子view的onDraw()方法的执行</li>
-<li>在measure和layout耗费的时间constraint比传统布局要低</li>
+        <h3 id="中文引用报错"><a href="#中文引用报错" class="headerlink" title="中文引用报错"></a>中文引用报错</h3><p><img src="https://upload-images.jianshu.io/upload_images/4960358-b25b2dd09b97b665.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="报错"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4960358-c9bd6b102abf5c26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内容"></p>
+<p>中文引用会直接报错; 改为变量引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;string name=&quot;item_node_topic_num&quot;&gt;%d个主题&lt;/string&gt; `</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text=&quot;@&#123;@string/item_node_topic_num(item.topics)&#125;&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="引用kotlin的伴生对象报错"><a href="#引用kotlin的伴生对象报错" class="headerlink" title="引用kotlin的伴生对象报错"></a>引用kotlin的伴生对象报错</h3><p><code>[kapt] An exception occurred: android.databinding.tool.util.LoggedErrorException: Found data binding errors.
+****/ data binding error ****msg:cannot find method toString(long) in class com.ukyoo.v2client.util.TimeFormatUtils</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">object TimeFormatUtils&#123;</span><br><span class="line"></span><br><span class="line">    fun toString(ts: Long): String &#123;</span><br><span class="line">        if (ts == -1L) return &quot;&quot;</span><br><span class="line">        val created = ts * 1000</span><br><span class="line">        val now = System.currentTimeMillis()</span><br><span class="line">        val difference = now - created</span><br><span class="line">        val text = if (difference &gt;= 0 &amp;&amp; difference &lt;= DateUtils.MINUTE_IN_MILLIS)</span><br><span class="line">            &quot;刚刚&quot;</span><br><span class="line">        else</span><br><span class="line">            DateUtils.getRelativeTimeSpanString(</span><br><span class="line">                created,</span><br><span class="line">                now,</span><br><span class="line">                DateUtils.MINUTE_IN_MILLIS,</span><br><span class="line">                DateUtils.FORMAT_ABBREV_RELATIVE</span><br><span class="line">            )</span><br><span class="line">        return text.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>xml中引用的地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:text=&quot;@&#123;TimeFormatUtils.toString(item.created)&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>因为kotlin运行时还是被翻译成java字节码的,所以和.java中调用kotlin一样,在databinding中引用kotlin的对象声明和伴生对象也需要加上@JvmField和@JvmStatic<br>注解才能将他们暴露为静态,参考<a href="&quot;https://kotlinlang.org/docs/reference/object-declarations.html#object-expressions&quot;">官方文档_Object Expressions and Declarations</a><br>这里只需要在方法上加上@JvmStatic注解,编译成功</p>
+<h3 id="include中使用"><a href="#include中使用" class="headerlink" title="include中使用"></a>include中使用</h3><ol>
+<li><p>在include的布局内定义好xxx变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line"></span><br><span class="line"> &lt;variable</span><br><span class="line">  name=&quot;item&quot;</span><br><span class="line">  type=&quot;com.ukyoo.v2client.entity.TopicModel&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/data&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在容器布局中直接app:xxx引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line"> &lt;variable</span><br><span class="line">  name=&quot;vm&quot;</span><br><span class="line">  type=&quot;com.ukyoo.v2client.ui.viewmodels.DetailViewModel&quot;/&gt;</span><br><span class="line">&lt;/data&gt;</span><br><span class="line"></span><br><span class="line">       &lt;RelativeLayout</span><br><span class="line">   android:id=&quot;@+id/container&quot;</span><br><span class="line">   android:layout_width=&quot;match_parent&quot;</span><br><span class="line">   android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;include</span><br><span class="line">    app:item=&quot;@&#123;vm.topic&#125;&quot;</span><br><span class="line">    android:id=&quot;@+id/top&quot;</span><br><span class="line">    layout=&quot;@layout/item_topic_header&quot;/&gt;</span><br><span class="line">       &lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以直接在include布局内引用xxx对象了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.ukyoo.v2client.widget.CircleImageView</span><br><span class="line"> app:url=&quot;@&#123;item.member.avatar&#125;&quot;</span><br><span class="line"> app:avatar=&quot;@&#123;true&#125;&quot;</span><br><span class="line"> android:id=&quot;@+id/iv_avatar&quot;</span><br><span class="line"> android:layout_width=&quot;36dp&quot;</span><br><span class="line"> android:layout_height=&quot;36dp&quot;</span><br><span class="line"> android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">    tools:src=&quot;@drawable/user&quot;/&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/4960358-dd68e2dabbc8ce95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="左边是传统布局,右边是约束布局"></p>
-<h2 id="通过FrameMetrics验证"><a href="#通过FrameMetrics验证" class="headerlink" title="通过FrameMetrics验证"></a>通过FrameMetrics验证</h2><blockquote>
-<p>我们使用 Android 7.0（API 级别 24）中引入的 OnFrameMetricsAvailableListener 分析了 ConstraintLayout 和 RelativeLayout 这两种类型的布局所执行的每次测量和布局操作所花费的时间。通过该类，您可以收集有关应用界面渲染的逐帧时间信息。</p>
-</blockquote>
-<p>参照<a href="https://developer.android.google.cn/reference/android/view/FrameMetrics.html" target="_blank" rel="noopener">googleSample</a>里的方法, 在asyncTask内执行layout和measure方法,打印出100次执行时 当前帧layout和measure所耗费的时间.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private val frameMetricsAvailableListener = Window.OnFrameMetricsAvailableListener &#123; _, frameMetrics, _ -&gt;</span><br><span class="line">    val frameMetricsCopy = FrameMetrics(frameMetrics)</span><br><span class="line">    // Layout measure duration in Nano seconds</span><br><span class="line">    val layoutMeasureDurationNs = frameMetricsCopy.getMetric(FrameMetrics.LAYOUT_MEASURE_DURATION)</span><br><span class="line"></span><br><span class="line">    total += layoutMeasureDurationNs</span><br><span class="line"></span><br><span class="line">    Log.d(TAG, &quot;layoutMeasureDurationNs: &quot; + layoutMeasureDurationNs)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="结果如下-1"><a href="#结果如下-1" class="headerlink" title="结果如下:"></a>结果如下:</h4><p><strong>取100帧的平均值, 传统布局耗时1.7ms. 约束布局耗时1.3ms</strong><br><img src="https://upload-images.jianshu.io/upload_images/4960358-cc95a4e0a3faf230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="左边是约束布局,右边是传统布局"></p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>层级越是复杂的布局,自上而下遍历测量和布局所花费的时间越多.<br>constarintLayout确实能一定程度的优化measure和layout的时间.</p>
 
       
     </div>
@@ -367,7 +361,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
+            <a href="/tags/Android-Databinding/" rel="tag"># Android Databinding</a>
           
         </div>
       
@@ -380,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/accessibility实践/" rel="next" title="acessibilitySerVice豆芽抢红包">
-                <i class="fa fa-chevron-left"></i> acessibilitySerVice豆芽抢红包
+              <a href="/2018/11/01/ConstraintLayout性能验证/" rel="next" title="ConstraintLayout性能验证">
+                <i class="fa fa-chevron-left"></i> ConstraintLayout性能验证
               </a>
             
           </div>
@@ -390,7 +384,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/01/databinding报错合集/" rel="prev" title="databinding报错合集">
+              <a href="/2018/12/02/apply{}和kotlin中的代码块/" rel="prev" title="databinding报错合集">
                 databinding报错合集 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -524,7 +518,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过HierarchyViewer-验证"><span class="nav-number">2.</span> <span class="nav-text">通过HierarchyViewer 验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结果如下"><span class="nav-number">2.0.1.</span> <span class="nav-text">结果如下:</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#通过FrameMetrics验证"><span class="nav-number">3.</span> <span class="nav-text">通过FrameMetrics验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结果如下-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">结果如下:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#中文引用报错"><span class="nav-number">1.</span> <span class="nav-text">中文引用报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用kotlin的伴生对象报错"><span class="nav-number">2.</span> <span class="nav-text">引用kotlin的伴生对象报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include中使用"><span class="nav-number">3.</span> <span class="nav-text">include中使用</span></a></li></ol></div>
             
 
           </div>
